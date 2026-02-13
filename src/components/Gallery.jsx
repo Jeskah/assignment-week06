@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Heart from "./Heart.jsx"
 import "./gallery.css"
 
@@ -42,11 +43,17 @@ export default function Gallery() {
 }, []);
 
 const toggleHeart = (photoId) => {
-    setLikedPhotos(prev =>
-        prev.includes(photoId)
-        ? prev.filter(id => id !== photoId)
-        : [...prev, photoId]
-    );
+    setLikedPhotos(prev => {
+        const isLiked = prev.includes(photoId);
+    
+    if (isLiked) {
+        console.log("Unloved :(", photoId);
+        return prev.filter(id => id !== photoId);
+    } else {
+        console.log("Loved! :)", photoId);
+        return [...prev, photoId];
+    }
+    });
 };
 
 const showLikedPhotos = () => {
@@ -68,11 +75,13 @@ useEffect(() => {
 return (
     <div>
         <header className="gallery-header">
-        <h1>Your Collection</h1>
+        <h1>
+            <Link to = "/collection">Your Collection</Link>
+        </h1>
         <div className="heart-counter" onClick={() => console.log(showLikedPhotos())}>
         ♥ {likedPhotos.length}
         </div>
-        <input placeholder="SEARCH"/>
+        <input className="search-bar" placeholder="SEARCH"/>
     </header>
 
         <div className="gallery">
@@ -87,12 +96,15 @@ return (
             <div className="picture-info">
                 <p className="name stats">{photo.user.name}</p>
                 <p className="downloads stats">⬇ {photo.downloads}</p>
-            </div>
 
-            <Heart
+            <div className="heart">
+                <Heart
                 heartedImg={likedPhotos.includes(photo.id)}
                 heartToggle={() => toggleHeart(photo.id)}
             />
+            
+            </div>
+            </div>
         </div>
         ))}
     </div>
