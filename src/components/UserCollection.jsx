@@ -1,4 +1,4 @@
-import "./LikedImages.jsx";
+import "./UserCollection.jsx";
 
 function LikedImages () {
     return (

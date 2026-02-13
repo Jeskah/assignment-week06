@@ -8,6 +8,19 @@
     gap: 2em;
 }
 
+.gallery-header {
+    display: flex;
+    color: rgb(148, 131, 128);
+    justify-content: space-evenly;
+    background-color: rgba(57, 27, 36, 0.373);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 10pt;
+    letter-spacing: 0.1em;
+    padding: 2em;
+}
+
 .gallery img {
     width: 100%;
     height:12em;
