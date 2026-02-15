@@ -21,10 +21,16 @@ import "./gallery.css"
 export default function Gallery() {
     const [photos, setPhotos] = useState([]);
 
+    const [expandedPhoto, setExpandedPhoto] = useState(null);
+
     const [likedPhotos, setLikedPhotos] = useState(() => {
         const stored = localStorage.getItem("likedPhotos");
         return stored ? JSON.parse(stored) : [];
     });
+
+//     useEffect(() => {
+//   console.log("expandedPhoto:", expandedPhoto);
+// }, [expandedPhoto]);
 
     // Fetching Singular Images from Unsplash using their unique ID found at the end of the image URL
     useEffect(() => {
@@ -85,7 +91,8 @@ return (
     </header>
 
         <div className="gallery">
-            {photos.map(photo => (
+        {photos.map(photo => (
+
         <div key={photo.id} className="photo-card">
 
                 <img
@@ -93,21 +100,42 @@ return (
                 alt={photo.alt_description || "Unsplash image"}
                 />
 
-            <div className="picture-info">
-                <p className="name stats">{photo.user.name}</p>
-                <p className="downloads stats">⬇ {photo.downloads}</p>
-
-            <div className="heart">
+        <div className="img-heart">
+            
                 <Heart
                 heartedImg={likedPhotos.includes(photo.id)}
                 heartToggle={() => toggleHeart(photo.id)}
-            />
-            
-            </div>
+                />
+
+                <button
+                className="zoom-btn"
+                onClick={() => setExpandedPhoto(photo)}
+                aria-label="Expand Images">
+                ⌕
+                </button>
+
+        </div>
+
+            <div className="picture-info">
+                <p className="name stats">{photo.user.name}</p>
+                <p className="downloads stats">⬇ {photo.downloads}</p>
             </div>
         </div>
         ))}
     </div>
+
+
+        {expandedPhoto && (
+    <div className="lightbox" onClick={() => setExpandedPhoto(null)}>
+        <img
+            src={expandedPhoto.urls.regular}
+            alt={expandedPhoto.alt_description || "Expanded Unsplash image"}
+            onClick={(e) => e.stopPropagation()}
+        />
+
+        
+    </div>
+)}
+
 </div>
-);
-}
+)};
