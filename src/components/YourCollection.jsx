@@ -1,6 +1,7 @@
 import "./YourCollection.jsx";
 
-function LikedImages () {
+function YourCollection () {
+
     return (
         <div>
 
@@ -8,4 +9,4 @@ function LikedImages () {
     )
 }
 
-export default LikedImages;
+export default YourCollection;

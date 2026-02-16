@@ -2,7 +2,7 @@ Week 06 things seem to be making more sense and somehow everything just seemed t
 
 I've really enjoyed using React and using it has solidified a lot of what we were doing in previous weeks, the way React works has somehow helped my understanding of some the concepts better.
 
-I was pretty excited to use React from the beginning with it's nice user functionalities and how much more efficient it seems to get an idea running quickly. I feel way more in flow using React.
+I was pretty excited to use React from the beginning with it's nice user functionalities and how much more efficient it seems to get an idea running quickly. I feel way more in flow using React. I found the syntax a little strange but fun.
 
 I've found linking pages and components at first a little tricky and knowing what order to place things but this is also something I feel is getting easier with repetition and understanding. 
 
